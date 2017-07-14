@@ -22,4 +22,5 @@ If anyone wishes to contribute equivalent examples in C#, we would be most inter
 
 # Contents
 
-1. Concepts
+1. [Concepts](ch concepts/concepts.md)
+1. [Basic Widgets](sec basics/basic widgets.md)
