@@ -143,3 +143,8 @@ Rather than lay our components out in geometric rows, columns or grids, relative
 In a relative layout, some components will generally be anchored to one edge of the parent widget; however, it is possible for a component to be anchored entirely to other widgets. In relative layouts, if a widget is anchored on both its left and right edges (or top and bottom edges), this will essentially make it *grow* and *shrink* in that direction.
 
 Very beneficially, relative layouts are very easy to *change*; they allow us to move individual components around without having to re-build substantial parts of the layout ourselves.
+
+Examples
+========
+
+For concrete examples, see either [Getting Started in Python](getting started python) or [Getting Started with JavaFX](getting started jfx.md)
