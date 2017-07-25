@@ -45,7 +45,7 @@ public class BasicWindow extends Application {
         root.add(l, 0, 0);
 
         Button b = new Button("A Button");
-        root.add(b, 1, 0);
+        root.add(b, 0, 1);
         
         primaryStage.setTitle("Starting Out");
         
@@ -77,7 +77,7 @@ class BasicWidget extends GridPane {
         add(l, 0, 0);
 
         Button b = new Button("A Button");
-        add(b, 1, 0);
+        add(b, 0, 1);
     }
 }
 ```
@@ -89,7 +89,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BasicWindow extends Application {
+public class BasicApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         BasicWidget bw = new BasicWidget();
@@ -122,10 +122,12 @@ Fortunately, Java allows us to define a new [anonymous class](https://docs.oracl
 b.setOnAction(new EventHandler<ActionEvent>() {
     @Override
     public void handle(ActionEvent event) {
-        System.out.println("button clicked!.");
+        System.out.println("Button clicked!");
     }
 });
 ```
+
+(We also had to add `import javafx.event.*` for the event-related types.)
 
 That's quite a statement!
 We're creating a new object, of an anonymous class that implements `EventHandler`, and providing a definition of the `handle()` method in-line.
@@ -136,7 +138,7 @@ Using a lambda expression, our callback looks like this:
 
 ``` java 
 b.setOnAction(
-    event -> System.out.println("Button clicked.");
+    event -> System.out.println("Button clicked!")
 );
 ```
 
