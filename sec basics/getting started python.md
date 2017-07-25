@@ -20,7 +20,7 @@ Notice that we gave the *parent* of the button -- in this case, the root window 
 We also need to tell the system *where* this label should be placed -- or it won't show up when we run the program!
 In the simplest case, we can do this with the `pack()` method.
 
-    l.pack()`
+    l.pack()
 
 Finally, we can start the event-processing loop, so that our application will actually run:
 
@@ -36,7 +36,8 @@ Though `pack` is simple, it's also very limited -- so much so that its primary u
 Let's add a button, and let's use the more sophisticated `grid` system.
 Grid allows us to specify a row and column coordinate (the zeroth-row and zeroth-column is at the top-left corner of the window).
 
-```import tkinter as tk
+``` python
+import tkinter as tk
 
 rw = tk.Tk()
 
@@ -46,15 +47,18 @@ l.grid(row=0, column=0)
 b = tk.Button(rw, text="a button")
 b.grid(row=1, column=0)
 
-rw.mainloop()```
+rw.mainloop()
+```
 
 A button that doesn't do anything isn't much use; let's assign an action to it.
 First we'll define a function, and then we'll assign it as the button's callback.
 
-```def b_clicked():
+``` python
+def b_clicked():
     print("clicked")
 
-b = tk.Button(rw, text="a button", command=b_clicked)```
+b = tk.Button(rw, text="a button", command=b_clicked)
+```
 
 Notice that we're using the name of a function as if it were a *value*; this is a feature of python (and some other languages) that some readers might not be familiar with.
 Python also allows us a slightly more compact syntax, that allows us to declare an *anonymous* function *in-line*:
@@ -69,7 +73,8 @@ This works, but we would generally like our interfaces to be more self-contained
 Let's wrap our interface inside a class.
 Our class needs to be a *widget* itself, so that we can use it in layouts like other widgets.
 
-```import tkinter as tk
+``` python
+import tkinter as tk
 
 class Basic(tk.Frame):
     def __init__(self, parent):
@@ -84,9 +89,10 @@ class Basic(tk.Frame):
 root = tk.Tk()
 b = Basic(root)
 b.pack()
-root.mainloop()```
+root.mainloop()
+```
 
-We use tk.Frame as the parent class.
+We use `tk.Frame` as the parent class.
 Frame is a *container widget*, designed to contain child widgets and lay them out; it makes a good parent class for our widget.
 Notice that the constructor takes a single parameter, `parent`, which we pass into our superclass's constructor; this is necessary to make sure that our widget is set up correctly.
 (Python, unlike some other languages, does not automatically call superclass constructors; if we want instances of our class to be set up the way a Frame would be, we have to call the Frame's constructor ourselves.)

@@ -5,14 +5,16 @@ Let's build a simple layout using JavaFX.
 
 The Application class is the starting-point for all JavaFX applications, so we'll start by importing it and difining one.
 
-```import javafx.application.Application;
+``` java
+import javafx.application.Application;
 
 public class BasicApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
 
     }
-}```
+}
+```
 
 We don't need to provide a main method; if we run this class, the JVM will automatically launch the application.
 It will do this by calling the `start` method on our application -- there are several other methods that we can override, but just `start` will do for now.
@@ -25,7 +27,8 @@ We'll build our interface by defining some top-level node, and then adding child
 
 A GridPane will make a pretty good top-level node -- it's designed to contain and layout children, after all!
 
-```import javafx.application.Application;
+``` java
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -49,7 +52,8 @@ public class BasicWindow extends Application {
         primaryStage.setScene(new Scene(root, 400, 400));
         primaryStage.show();
     }
-}```
+}
+```
 
 Here we've also built a `Label` and a `Button` widget, and added them to our `GridPane`.
 (The `add` method takes the node to be added, the column and the row as parameters, in that order.
@@ -60,7 +64,8 @@ We would very much like to break our interface into seperate components, and pac
 
 The GridPane makes a fairly good super-class for an interface component; we can break the GridPanel and its children into a separate class...
 
-```import javafx.scene.control.*;
+``` java
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 
@@ -74,11 +79,13 @@ class BasicWidget extends GridPane {
         Button b = new Button("A Button");
         add(b, 1, 0);
     }
-}```
+}
+```
 
 ...which we can then construct when we start our application...
 
-```import javafx.application.Application;
+``` java
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -92,7 +99,8 @@ public class BasicWindow extends Application {
         primaryStage.setScene(new Scene(bw, 400, 400));
         primaryStage.show();
     }
-}```
+}
+```
 
 Finally, a button that doesn't do anything isn't particularly interesting.
 Let's make our button print a message when it's clicked.
@@ -105,17 +113,19 @@ If you aren't familiar with templates and generics, see the [java tutorials on g
 We could create a new class that implements the EventHandler interface, create an instance of it, and give it to our button.
 For a hypathetical `MyEventHandler` class, that might look like this:
 
-```b.setOnAction(new MyEventHandler());```
+    b.setOnAction(new MyEventHandler());
 
 But if we had to do that for every button, our source directory might start to get overrun with trivial, ten-line event-handling classes.
 Fortunately, Java allows us to define a new [anonymous class](https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html) in-line; doing so looks like this:
 
-```b.setOnAction(new EventHandler<ActionEvent>() {
+``` java
+b.setOnAction(new EventHandler<ActionEvent>() {
     @Override
     public void handle(ActionEvent event) {
         System.out.println("button clicked!.");
     }
-});```
+});
+```
 
 That's quite a statement!
 We're creating a new object, of an anonymous class that implements `EventHandler`, and providing a definition of the `handle()` method in-line.
@@ -124,8 +134,10 @@ We're creating a new object, of an anonymous class that implements `EventHandler
 This is still a little cumbersome; more recently, Java also gained the ability to define a [lambda expression](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html).
 Using a lambda expression, our callback looks like this:
 
-```b.setOnAction(
+``` java 
+b.setOnAction(
     event -> System.out.println("Button clicked.");
-);```
+);
+```
 
 Very concise!
