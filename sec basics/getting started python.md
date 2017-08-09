@@ -1,5 +1,5 @@
-First Steps: Displays, Controls and Layouts
-===========================================
+Getting Started with Python
+===========================
 
 Let's build a simple layout in python3, using Tk.
 
@@ -83,8 +83,11 @@ class Basic(tk.Frame):
         l = tk.Label(self, text="a label")
         l.grid(row=0, column=0)
 
-        b = tk.Button(self, text="A Button", command=lambda: print("clicked"))
+        b = tk.Button(self, text="A Button", command=self.__b_clicked)
         b.grid(row=1, column=0)
+    
+    def __b_clicked(self):
+        print("clicked")
 
 root = tk.Tk()
 b = Basic(root)
@@ -97,5 +100,11 @@ Frame is a *container widget*, designed to contain child widgets and lay them ou
 Notice that the constructor takes a single parameter, `parent`, which we pass into our superclass's constructor; this is necessary to make sure that our widget is set up correctly.
 (Python, unlike some other languages, does not automatically call superclass constructors; if we want instances of our class to be set up the way a Frame would be, we have to call the Frame's constructor ourselves.)
 Notice also that, as we construct our layout, we still pass the parent widget into each widget's constructor as the first argument -- only now that parent is `self`, the widget that we are buliding.
+
+Note that we also replaced the *lambda* with a *class method*.
+We could have kept the lambda, but the class method is useful if we want to do something more complex than a single expression -- or if we need to access some variable that is a member of the class.
+(Those unfamiliar with Python might wonder why we can specify `self.__cb_clicked` as the callback, without specifying the `self` argument.
+Does tkinter take care of that?
+In fact, it does not; this works because `self.__cb_callback` is a *bound method*, a python concept somewhat beyond the scope of this document.)
 
 With all of this in place, we can use our Basic widget exactly like any other widget!

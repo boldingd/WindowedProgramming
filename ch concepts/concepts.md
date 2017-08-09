@@ -24,7 +24,7 @@ An Example: Processing Numbers
 
 To give us something concrete to work with, let us turn to an example. Consider a Python program that we will use to analyze an arbitrary series of numbers:
 
-``` Python
+``` python
 def PrintIfEven(number):
   if number % 2 == 0:
     print(str(number))
@@ -229,3 +229,10 @@ There is a subtlety here; notice that the output that we see depends on how quic
 This suggests what is actually a very general principle; your callbacks should be *fast*. What exactly "fast" means we shall not precisely define; as a bound, for GUI programming, any callback whose execution time a human could perceive is a callback that is far too slow. The faster your callbacks are, the more responsive your program will be; the slower your callbacks are, the more your interfaces will stutter.
 
 The student may wonder how exactly one is to handle a long-running process, such as fetching a resource from the internet. The short answer is that we do this outside of a callback; we mark the interface such that the user knows that a long-running job is being performed, we start the job perhaps on another thread, and we return to event-processing on the main thread. Part of our event-processing may be to check the status of the long-running job, so that we can update the interface with that jobs current state. Having said this, handling long-running jobs is a more involved topic that we shall return to later.
+
+Declarative Interface Building
+==============================
+
+If we are going to be spending our time declaring entities and specifying their properties -- and not writing explicit algorythms -- then one might wonder if "explicit code" is the best way to build an interface.
+In fact, many modern graphical kits allow us to use *declarative* languages to build our interfaces.
+XML is a common choice; JavaFX allows users to specify interfaces using the XML-based FXML, while Windows Presentation Foundation (among other Microsoft technologies) makes heavy use of XAML.

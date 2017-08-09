@@ -69,3 +69,8 @@ SpinBoxes are not as common as the above widgets; they are not supported in Wind
 There are several widgets that support numeric selections; SpinBoxes are useful when the space available for the widget in the GUI is limited, and in particular when only a specific range of numerical selections are possible (as SpinBoxes typically have a set precision, and typically increment or decrement by fixed amounts).
 
 SpinBoxes have several interesting properties. Perhaps the most obvious is their current value; we are also interested in their 'default' value, their 'minimum' and 'maximum' values, and their 'increment' and 'decrement' steps. The combination of these values will determine the range of possible values that the SpinBox could have. Be aware that these, on some platforms, care must be taken to ensure that these settings 'agree'. For example, the 'increment' and 'decrement' should probably be the same value, providing a single step-size, and the minimum and maximum should be a multiple of that step size. The default value should also be chosen so that it is a multiple of step-size.
+
+Examples
+========
+
+For concrete examples, see either [Selection Widgets in Python](getting started python.md) or [Selection Widgets with JavaFX](selections jfx.md)
