@@ -236,3 +236,6 @@ Declarative Interface Building
 If we are going to be spending our time declaring entities and specifying their properties -- and not writing explicit algorythms -- then one might wonder if "explicit code" is the best way to build an interface.
 In fact, many modern graphical kits allow us to use *declarative* languages to build our interfaces.
 XML is a common choice; JavaFX allows users to specify interfaces using the XML-based FXML, while Windows Presentation Foundation (among other Microsoft technologies) makes heavy use of XAML.
+
+The process for working with declarative languages is much different (and generally much quicker) than building our interfaces in explicit code.
+Even more useful than making it easier and quicker to declare our interfaces, they can also make it much easier to *change* our interfaces -- as happens frequently when developing, testing and perfecting software.

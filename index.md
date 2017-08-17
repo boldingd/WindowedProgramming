@@ -9,7 +9,7 @@ Contributions are welcome!
 
 The text is being copied over from a WikiBook that exists in [Mr. Bolding's wikimedia sandbox](https://en.wikibooks.org/wiki/User:Boldingd/Sandbox/GuiProgramming).
 One may wonder, why copy a document that already exists over to github.io, especially if contributions are sought?
-The answer is that the book is intended to be used in an academic concept: this requires that we maintain some measure of control over the contents.
+The answer is that the book is intended to be used in an academic context: this requires that we maintain some measure of control over the contents.
 
 # Python and Java
 

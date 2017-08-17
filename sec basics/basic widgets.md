@@ -1,7 +1,7 @@
 First Steps: Displays, Controls and Layouts
 ===========================================
 
-Having looked at the basic concepts of event-driven programming, looked at a number of possible toolkits and considered how to start a "blank file" project, let us now turn to the building-blocks that we will use to construct graphical interfaces.
+Having looked at the basic concepts of event-driven programming and looked at a number of possible toolkits, let us now turn to the building-blocks that we will use to construct graphical interfaces.
 
 Widgets
 =======
@@ -17,6 +17,7 @@ The BasicWidget
 
 GUI toolkits will frequently include a basic Widget class: we will call this the `BasicWidget`.
 `BasicWidget`s are the building blocks for their specific toolkits; they define the capabilities of a widget in that kit, and include most of the functionality necessary to create a other widgets (which will typically done by creating classes that extend the `BasicWidget`).
+(Not all kits include a singular `BasicWidget` -- both Swing and JavaFX break up the responsibilities of a BasicWidget across several different classes.)
 
 The other widgets present in the toolkit - buttons, images, text boxes and so on - will inherit from the `BasicWidget` class.
 The benefits of doing this are twofold.
@@ -29,7 +30,7 @@ Widget Trees
 
 `BasicWidget`s frequently have the ability to contain other `BasicWidget`s. This allows us to put `BasicWidget`s into other `BasicWidget`s - or more usefully, other *classes that inherit from* `BasicWidget` into other classes that inherit from `BasicWidget`/
 
-We can use this capability to create GUIs by creating composits of widgets containing widgets.
+We can use this capability to create GUIs by creating composites of widgets containing widgets.
 We refer to this arrangement as a *widget tree*.
 If one widget *A* contains another widget *B*, we say that *A* is the parent of *B*, and that *B* is the child of *A*.
 
@@ -38,7 +39,8 @@ We could create a simple GUI (that might be the start of a file downloader, for 
 
 Notice that this composite object would still appear to be a single `BasicWidget` class to its parent.
 We could create a class that automated this process - a class that inherited from `BasicWidget` and, in its constructor, creates a `Button` and `TextField` object and adds them to itself as children.
-This suggests one of the major uses for `BasicWidget`s, and one of the major strategies for building GUIs: creating classes that inherit from a toolkits `BasicWidget` class and populate themselves with child widgets.
+This is a general strategy for building interfaces: creating classes that inherit from a toolkits `BasicWidget` class (or another class designed for the purpose), building our interface within our classes's constructor, and adding any auxiliary methods, properties and events that we need.
+Our interface is then easy to use: it can easily be constructed and used just like any other widget!
 
 Types of Widgets
 ----------------
@@ -77,6 +79,15 @@ Properties
 Finally, many widgets also have *properties*. Properties, as the name implies, are aspects of given widgets that we can adjust to alter the behavior or display of an individual widget. (One might consider the events that a widget possesses to be special properties, and some 'kits do treat them this way.)  A check-box widget might have a *checked* property, which will tell us whether it is currently *checked* or *unchecked*.
 
 Recall that any given widget will typically inherit from a `BasicWidget` base class; some might inherit from several intermediate classes along the way. A Button widget might inherit from a `Clickable` class, which might itself inherit from a `FixedSizeWidget` class. Each one of these classes might potentially include properties that their descendant classes might inherit. Because of this, some properties will be common to all widgets, while others will be specific to a certain widget class.
+
+But what, precisely, is a property?
+How is it represented in your program, and how do you interact with it?
+That varies from language to language and tool-kit to tool-kit.
+In some graphical libraries, "properties" in the sense that we mean here are no different than any other piece of object state -- they might be accessible by a pair of getter-and-setter methods.
+However, in some other kits -- and especially in *declarative* graphical languages -- properties might be special types of entities.
+
+Many modern kits also support the concept of a *binding* -- that is, of connecting two properties on two widgets, so that a change in one will automatically cause a corresponding change in the other, without requiring any explicit code on our part.
+These facilities can be very powerful; they can allow for the creation of at least simple graphical interfaces *without any (imperative) code at all*.
 
 Some Basic Widgets
 ==================
